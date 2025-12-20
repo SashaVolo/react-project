@@ -1,0 +1,206 @@
+
+.header {
+  width: 100%;
+  max-width: 1800px;
+  background-color: #fff;
+  border-radius: 15px;
+  color: #000;
+  
+  display: flex;
+  flex-direction: column; 
+  align-items: stretch;
+  justify-content: flex-start;
+  
+  padding: 10px clamp(20px, 5vw, 100px);
+  margin: 0 auto 40px auto;
+  
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+}
+
+
+.header span, 
+.header li {
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.header span:hover {
+  color: #832F81;
+}
+
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 60px;
+}
+
+
+.logoHeader {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoHeader img {
+  width: 60px;
+  height: 60px;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.navList li {
+  cursor: pointer;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.navList li img {
+  width: 24px;
+  height: 24px;
+}
+
+
+.profile {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile img {
+  width: 54px;
+  height: 54px;
+  border-radius: 100px;
+}
+
+.burgerBtn img {
+  width: 40px;
+  height: 40px;
+}
+
+.expandedContent {
+  width: 100%;
+  overflow: hidden;
+}
+
+.expandedGrid {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 10px;
+}
+
+
+.videoContainer {
+  flex: 1.5; 
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.videoContainer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.linksContainer {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mobileLinkItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.mobileLinkItem:hover {
+  color: #832F81;
+}
+
+.mobileLinkItem img {
+  width: 24px;
+  height: 24px;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 5px 0;
+}
+
+
+.profileImg {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+}
+
+
+@media (max-width: 600px) {
+  
+  .header {
+    padding: 10px 20px;
+  }
+
+
+  .logoHeader img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logoHeader span {
+    font-size: 20px;
+  }
+
+  .expandedGrid {
+    flex-direction: column;
+  }
+  
+  .videoContainer {
+    width: 100%;
+    height: 180px; 
+    flex: none;
+  }
+  
+  .linksContainer {
+    width: 100%;
+    gap: 15px;
+  }
+}

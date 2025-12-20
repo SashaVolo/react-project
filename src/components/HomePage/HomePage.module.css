@@ -1,0 +1,212 @@
+/* --- MAIN CONTAINER --- */
+.homePage {
+  font-family: 'Instrument Sans', 'Inter', sans-serif;
+  width: 100%;
+  max-width: 1800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+  color: #fff;
+  padding-bottom: 60px;
+}
+
+/* --- LOGO SECTION --- */
+.logoSection {
+  width: 100%;
+  max-width: 1800px;
+  min-width: 100px;
+  height: 600px;
+  display: flex;
+  margin-top: 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoSection img {
+  width: 100%;
+  max-width: 1800px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- DESCRIPTION SECTION --- */
+.descriptionSection {
+  max-width: 1300px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.descriptionSection p {
+  font-size: 25px;
+  font-weight: 200;
+}
+
+.descriptionSection p span {
+  font-weight: 700;
+}
+
+/* --- STRUCTURE & CARDS --- */
+.structure {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.structureTitle {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.techCard {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+}
+
+.techCard h3 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+}
+
+.techCard h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.techCard ul, .techCard ol {
+  margin-left: 20px;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+/* --- LIST HOVER EFFECTS --- */
+.techCard ul li, 
+.techCard ol li {
+  transition: transform 0.2s ease, color 0.2s ease;
+  cursor: default;
+}
+
+.techCard ul li:hover,
+.techCard ol li:hover {
+  transform: translateX(10px);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* --- DATABASE ITEMS --- */
+.dbItem {
+  margin-bottom: 20px;
+}
+
+.dbItem strong {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* --- DECORATION (ROCKET) --- */
+.cardDecoration {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 300px; 
+  opacity: 0.5;   
+  height: auto;
+  z-index: 1; 
+  pointer-events: none;
+}
+
+/* --- FOOTER LOGO --- */
+.endLogoSection {
+  margin: 80px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.endLogoSection img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+
+@media (max-width: 1000px) {
+  
+  .homePage {
+    gap: 40px; /* Виправлено синтаксис (було gap: px) */
+  }
+
+  /* 1. Logo Adjustments */
+  .logoSection {
+    height: auto; 
+    margin-top: 100px;
+    padding-bottom: 20px;
+  }
+  
+  .logoSection img {
+    max-width: 300px;
+  }
+
+  /* 2. Text Adjustments */
+  .descriptionSection p {
+    width: 100%; /* Краще 100% або max-width замість фіксованих 350px */
+    max-width: 350px;
+    margin: 0 auto;
+    font-size: 18px;
+  }
+  
+  .structureTitle {
+    font-size: 32px;
+  }
+  
+  .structure {
+    display: flex;
+    align-items: center;
+  }
+
+  /* 3. Card Adjustments */
+  .techCard {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .techCard h3 {
+    font-size: 20px; /* Трохи збільшив (15px замало для заголовка) */
+  }
+  
+  .techCard h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    font-weight: 600;
+  }
+
+  .techCard ul, .techCard ol {
+    margin-left: 20px;
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* 4. Footer Logo Adjustments */
+  .endLogoSection {
+    margin: 40px 20px;
+  }
+}
