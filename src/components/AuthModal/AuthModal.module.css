@@ -1,0 +1,131 @@
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Напівпрозорий чорний */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Щоб було поверх усього */
+
+  backdrop-filter: blur(5px); 
+  
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Саме вікно */
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: #333;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+  box-sizing: border-box; 
+}
+
+.input:focus {
+  outline: none;
+  border-color: #7c3aed; /* Фіолетовий акцент */
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+.img{
+    width: 150px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+.submitButton {
+  background-color: #a324ca; /* Основний колір Luppiter */
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.submitButton:hover {
+  background-color: #6d28d9;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: #7c3aed;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.toggleButton:hover {
+  text-decoration: underline;
+}
