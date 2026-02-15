@@ -1,17 +1,18 @@
-/* --- MAIN CONTAINER --- */
 .homePage {
   font-family: 'Instrument Sans', 'Inter', sans-serif;
   width: 100%;
-  max-width: 1800px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 100px;
+  gap: 80px;
   color: #fff;
   padding-bottom: 60px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
-/* --- LOGO SECTION --- */
+
 .logoSection {
   width: 100%;
   max-width: 1800px;
@@ -21,6 +22,7 @@
   margin-top: 80px;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .logoSection img {
@@ -30,7 +32,6 @@
   object-fit: contain;
 }
 
-/* --- DESCRIPTION SECTION --- */
 .descriptionSection {
   max-width: 1300px;
   text-align: center;
@@ -47,7 +48,7 @@
   font-weight: 700;
 }
 
-/* --- STRUCTURE & CARDS --- */
+
 .structure {
   width: 100%;
   max-width: 1300px;
@@ -96,7 +97,6 @@
   font-size: 18px;
 }
 
-/* --- LIST HOVER EFFECTS --- */
 .techCard ul li, 
 .techCard ol li {
   transition: transform 0.2s ease, color 0.2s ease;
@@ -110,7 +110,6 @@
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* --- DATABASE ITEMS --- */
 .dbItem {
   margin-bottom: 20px;
 }
@@ -121,7 +120,7 @@
   margin-bottom: 5px;
 }
 
-/* --- DECORATION (ROCKET) --- */
+
 .cardDecoration {
   position: absolute;
   top: 30px;
@@ -133,7 +132,6 @@
   pointer-events: none;
 }
 
-/* --- FOOTER LOGO --- */
 .endLogoSection {
   margin: 80px;
   display: flex;
@@ -151,10 +149,9 @@
 @media (max-width: 1000px) {
   
   .homePage {
-    gap: 40px; /* Виправлено синтаксис (було gap: px) */
+    gap: 40px; 
   }
 
-  /* 1. Logo Adjustments */
   .logoSection {
     height: auto; 
     margin-top: 100px;
@@ -165,9 +162,8 @@
     max-width: 300px;
   }
 
-  /* 2. Text Adjustments */
   .descriptionSection p {
-    width: 100%; /* Краще 100% або max-width замість фіксованих 350px */
+    width: 100%; 
     max-width: 350px;
     margin: 0 auto;
     font-size: 18px;
@@ -182,14 +178,13 @@
     align-items: center;
   }
 
-  /* 3. Card Adjustments */
   .techCard {
     width: 100%;
     padding: 20px;
   }
   
   .techCard h3 {
-    font-size: 20px; /* Трохи збільшив (15px замало для заголовка) */
+    font-size: 20px; 
   }
   
   .techCard h4 {
@@ -205,7 +200,6 @@
     font-size: 15px;
   }
 
-  /* 4. Footer Logo Adjustments */
   .endLogoSection {
     margin: 40px 20px;
   }

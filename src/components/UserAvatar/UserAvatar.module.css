@@ -1,0 +1,17 @@
+.avatarContainer {
+
+    width: var(--size, 40px);
+    height: var(--size, 40px);
+    
+    border-radius: 50%;
+    background-color: #eef2f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.avatarEmoji {
+    font-size: calc(var(--size, 40px) * 0.65);
+    line-height: 1;
+}

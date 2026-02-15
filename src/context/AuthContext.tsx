@@ -1,78 +1,69 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-export interface User {
-  id: number;
-  firstName: string;
-  secondName: string;
-  email: string;
-  avatar?: string | null; 
-  isAdmin: boolean;
+interface IUser {
+    id: number;
+    firstName: string;
+    secondName: string;
+    email: string;
+    avatar?: string;
+    isAdmin: boolean;
 }
 
 interface AuthContextType {
-  user: User | null;      
-  token: string | null;   // JWT токен
-  login: (token: string, userData: User) => void; // Функція входу
-  logout: () => void;     // Функція виходу
-  isAuthenticated: boolean; // Просто прапорець true/false
+    user: IUser | null;
+    token: string | null;
+    isAuthenticated: boolean;
+    login: (token: string, user: IUser) => void;
+    logout: () => void;
+    updateUserData: (updatedFields: Partial<IUser>) => void;
 }
 
-// Створюємо сам контекст
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Створюємо Провайдер
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const [user, setUser] = useState<IUser | null>(null);
+    const [token, setToken] = useState<string | null>(null);
 
-  // Цей useEffect запускається один раз при завантаженні сайту
-  // Він перевіряє, чи ми вже входили раніше
-  useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    const storedUser = localStorage.getItem('user');
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        const storedUser = localStorage.getItem('user');
+        if (storedToken && storedUser) {
+            setToken(storedToken);
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
 
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+    const login = (newToken: string, newUser: IUser) => {
+        localStorage.setItem('token', newToken);
+        localStorage.setItem('user', JSON.stringify(newUser));
+        setToken(newToken);
+        setUser(newUser);
+    };
 
-  // Функція Логіну (викликаємо її, коли сервер відповів "ОК")
-  const login = (newToken: string, newUser: User) => {
-    setToken(newToken);
-    setUser(newUser);
-    
-    // Зберігаємо в браузері, щоб не вилітало при оновленні сторінки
-    localStorage.setItem('token', newToken);
-    localStorage.setItem('user', JSON.stringify(newUser));
-  };
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setToken(null);
+        setUser(null);
+    };
 
-  // Функція Виходу
-  const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  };
+    const updateUserData = (updatedFields: Partial<IUser>) => {
+        if (user) {
+            const newUser = { ...user, ...updatedFields };
+            setUser(newUser);
+            localStorage.setItem('user', JSON.stringify(newUser));
+        }
+    };
 
-  return (
-    <AuthContext.Provider value={{ 
-      user, 
-      token, 
-      login, 
-      logout, 
-      isAuthenticated: !!user 
-    }}>
-      {children}
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{ user, token, isAuthenticated: !!token, login, logout, updateUserData }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
-
 export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+    const context = useContext(AuthContext);
+    if (!context) throw new Error('useAuth must be used within an AuthProvider');
+    return context;
 };

@@ -1,0 +1,293 @@
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    animation: slideUpFade 0.6s ease-out;
+}
+
+.profileHeader {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.banner {
+    height: 260px;
+    width: 100%;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+.userInfo {
+    padding: 0 40px 40px;
+    /* Було -80px. Зробив -110px, щоб аватар піднявся вище на банер */
+    margin-top: -110px; 
+    display: flex;
+    /* Змінив на center, щоб аватар був рівно по центру вертикалі відносно тексту */
+    align-items: center; 
+    gap: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.avatarWrapper {
+    position: relative;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background-color: #f8fafc;
+    border: 4px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details {
+    flex-grow: 1;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    /* Прибрав justify-content: flex-end, щоб блок не притискався до низу, а центрувався разом з аватаром */
+    justify-content: center; 
+}
+
+.name {
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 0 0 5px 0;
+    line-height: 1;
+    color: #1e293b;
+    letter-spacing: -0.03em;
+}
+
+.email {
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- СЕКЦІЯ ВИБОРУ ЕМОДЗІ --- */
+.emojiPickerContainer {
+    /* Збільшив відступ зверху (було 15px), щоб блок "опустився" і не був задертим */
+    margin-top: 25px; 
+    margin-bottom: 20px;
+    padding: 20px 25px;
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    width: fit-content;
+    max-width: 100%;
+}
+
+.emojiPickerLabel {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #94a3b8;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.emojiPickerLabel::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #a18cd1;
+    border-radius: 50%;
+}
+
+.emojiGrid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.emojiButton {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    background: #f8fafc;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.emojiButton:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #e2e8f0;
+}
+
+.emojiButton.active {
+    border-color: #a18cd1;
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(161, 140, 209, 0.3);
+}
+
+/* --- СТАТИСТИКА --- */
+
+.statsRow {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.statItem {
+    background: #ffffff;
+    padding: 15px 35px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.statItem:hover {
+    transform: translateY(-4px);
+    border-color: #a18cd1;
+    box-shadow: 0 15px 30px rgba(161, 140, 209, 0.15);
+}
+
+.statValue {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #1e293b;
+    line-height: 1.2;
+}
+
+.statItem:hover .statValue {
+    background: linear-gradient(90deg, #a18cd1, #fbc2eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-top: 5px;
+    display: block;
+}
+
+/* --- СЕКЦІЯ ПОСТІВ --- */
+.postsSection h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.emptyState {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.95);
+    padding: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+}
+
+/* --- МОБІЛЬНА ВЕРСІЯ --- */
+@media (max-width: 850px) {
+    .userInfo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: -80px;
+        padding: 0 20px 40px;
+    }
+
+    .banner {
+        height: 200px;
+    }
+
+    .details {
+        width: 100%;
+        align-items: center;
+    }
+
+    .name {
+        font-size: 2.2rem;
+        margin-top: 15px;
+    }
+    
+    .emojiPickerContainer {
+        margin: 20px auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .emojiGrid {
+        justify-content: center;
+    }
+
+    .statsRow {
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .statItem {
+        flex: 1;
+        min-width: 120px;
+    }
+}
